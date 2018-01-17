@@ -1,6 +1,5 @@
 function palindrome(str) {
-    str_reversed = str.split('').reverse().join('')
-    return str === str_reversed
+    return str === str.split('').reverse().join('')
 }
 
 module.exports = palindrome;
