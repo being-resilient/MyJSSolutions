@@ -6,13 +6,14 @@ function maxChar(str) {
     while(index < arr.length) {
         if (!count[arr[index]]) {
             count[arr[index]] = 1
-        } else {
+        } 
+        else {
             count[arr[index]] = count[arr[index]] + 1
         }
         new_count[index] = count[arr[index]]
         index = index + 1
     }
-    return Math.max(...new_count)
+    return arr[new_count.indexOf(Math.max(...new_count))]
 }
 
 module.exports = maxChar;
