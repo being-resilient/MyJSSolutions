@@ -3,8 +3,8 @@ class Queue {
         this.data = []
     }
 
-    add(record) {
-        this.data.unshift(record)
+    add(data) {
+        this.data.unshift(data)
     }
 
     peek() {
