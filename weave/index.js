@@ -14,10 +14,11 @@ const Queue = require('./queue.js');
 
 function weave(sourceOne, sourceTwo) {
     const QueueThree = new Queue();
-    while (sourceOne.peek() !== undefined || sourceTwo.peek() !== undefined) {
+    while (sourceOne.peek() && sourceTwo.peek()) {
         QueueThree.add(sourceOne.remove())
-        QueueThree.add(sourceTwo.remove())
-    } 
+        QueueThree.add(sourceTwo.remove()) 
+    }
+
     if (sourceOne.peek() === undefined) {
         while(sourceTwo.peek() !== undefined) {
 
