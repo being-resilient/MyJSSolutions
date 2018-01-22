@@ -62,6 +62,11 @@ class LinkedList {
         this.head = null
         return this.head
     }
+
+    removeFirst() {
+        const temp = this.head.next
+        this.head.next = temp.next
+    }
 }
 
 // module.exports = { Node, LinkedList };
@@ -79,7 +84,11 @@ list.insertFirst('g')
 list.insertFirst('h')
 list.insertFirst('i')
 console.log(list.size())
+list.removeFirst()
+list.removeFirst()
+list.removeFirst()
 console.log(list.getFirst())
-console.log(list.getLast())
-console.log(list.clear())
 console.log(list.size())
+// console.log(list.getLast())
+// console.log(list.clear())
+// console.log(list.size())
