@@ -34,13 +34,15 @@ class LinkedList {
 
     size() {
         var size = 0
-        var temp = new Node(null)
-        temp.next = this.head
-        while(temp.next !== null) {
-            temp = temp.next
-            size = size + 1
+        var temp = this.head
+        if(!this.head) { return size } else {
+            while(temp !== null) {
+                temp = temp.next
+                size = size + 1
+            }
+            return size - 1
         }
-        return size - 1
+        
     }
 
     getFirst() {
@@ -54,6 +56,11 @@ class LinkedList {
             this.head = this.head.next
         }
         return temp.next
+    }
+
+    clear() {
+        this.head = null
+        return this.head
     }
 }
 
@@ -74,3 +81,5 @@ list.insertFirst('i')
 console.log(list.size())
 console.log(list.getFirst())
 console.log(list.getLast())
+console.log(list.clear())
+console.log(list.size())
