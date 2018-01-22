@@ -12,6 +12,14 @@ class LinkedList {
 
     insertFirst(data) {
         const node = new Node(data)
+        const temp = this.head.next
+        this.head.next = node
+        node.next = temp
+        return this.head
+    }
+
+    insertAfter(data) {
+        const node = new Node(data)
         if (!this.head.next) {
             this.head.next = node
         } else {
@@ -32,15 +40,27 @@ class LinkedList {
         }
         return size
     }
+
+    getFirst() {
+        if(this.head.next !== null) {
+            return this.head.next
+        }
+    }
 }
 
 // module.exports = { Node, LinkedList };
 const list = new LinkedList();
 
 // list.size()
+list.insertAfter('e')
+list.insertAfter('f')
+list.insertAfter('g')
+list.insertAfter('h')
+list.insertAfter('i')
 list.insertFirst('e')
 list.insertFirst('f')
 list.insertFirst('g')
 list.insertFirst('h')
 list.insertFirst('i')
+console.log(list.getFirst())
 console.log(list.size())
