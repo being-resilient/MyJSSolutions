@@ -13,12 +13,12 @@ class Queue {
 
     add(data) {
         if (this.stackOne && this.stackTwo) {
-            while (this.stackOne.peek() !== undefined) 
+            while (this.stackOne.peek()) 
             {
                 this.stackTwo.add(this.stackOne.remove())
             }
             this.stackOne.add(data)
-            while(this.stackTwo.peek() !== undefined) 
+            while(this.stackTwo.peek()) 
             {
                 this.stackOne.add(this.stackTwo.remove())
             }
