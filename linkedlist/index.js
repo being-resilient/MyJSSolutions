@@ -34,17 +34,26 @@ class LinkedList {
 
     size() {
         var size = 0
-        while(this.head.next !== null) {
-            this.head = this.head.next
+        var temp = new Node(null)
+        temp.next = this.head
+        while(temp.next !== null) {
+            temp = temp.next
             size = size + 1
         }
-        return size
+        return size - 1
     }
 
     getFirst() {
-        if(this.head.next !== null) {
-            return this.head.next
+        return this.head.next
+    }
+
+    getLast() {
+        var temp = new Node(null)
+        while (this.head.next !== null) {
+            temp = this.head
+            this.head = this.head.next
         }
+        return temp.next
     }
 }
 
@@ -62,5 +71,6 @@ list.insertFirst('f')
 list.insertFirst('g')
 list.insertFirst('h')
 list.insertFirst('i')
-console.log(list.getFirst())
 console.log(list.size())
+console.log(list.getFirst())
+console.log(list.getLast())
