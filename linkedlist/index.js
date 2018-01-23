@@ -7,15 +7,42 @@ class Node {
 
 class LinkedList {
     constructor() {
-        this.head = new Node(null)
+        this.head = null
     }
 
     insertFirst(data) {
         const node = new Node(data)
-        const temp = this.head.next
-        this.head.next = node
-        node.next = temp
+        if (!this.head) {
+            this.head = node
+        } else {
+            const temp = this.head
+            this.head = node
+            node.next = temp
+        }
+    }
+
+    size() {
+        var size = 0
+        var temp = this.head
+        while(temp) {
+            temp = temp.next
+            size += 1
+        }
+        return size    
+    }
+
+    getFirst() {
         return this.head
+    }
+
+    getLast() {
+        var temp = this.head
+        var prev = null
+        while (temp) {
+            prev = temp
+            temp = temp.next
+        }
+        return prev
     }
 
     insertAfter(data) {
@@ -32,32 +59,6 @@ class LinkedList {
         return this.head
     }
 
-    size() {
-        var size = 0
-        var temp = this.head
-        if(!this.head) { return size } else {
-            while(temp !== null) {
-                temp = temp.next
-                size = size + 1
-            }
-            return size - 1
-        }
-        
-    }
-
-    getFirst() {
-        return this.head.next
-    }
-
-    getLast() {
-        var temp = new Node(null)
-        while (this.head.next !== null) {
-            temp = this.head
-            this.head = this.head.next
-        }
-        return temp.next
-    }
-
     clear() {
         this.head = null
         return this.head
@@ -67,28 +68,43 @@ class LinkedList {
         const temp = this.head.next
         this.head.next = temp.next
     }
+
+    removeLast() {
+        var temp = new Node(null)
+        temp = this.head
+        var temp_two = new Node(null)
+        while (temp.next !== null) {
+            temp_two = temp
+            temp = temp.next
+        }
+        temp_two = null
+    }
 }
 
-// module.exports = { Node, LinkedList };
-const list = new LinkedList();
+module.exports = { Node, LinkedList };
+//const list = new LinkedList();
 
 // list.size()
-list.insertAfter('e')
-list.insertAfter('f')
-list.insertAfter('g')
-list.insertAfter('h')
-list.insertAfter('i')
-list.insertFirst('e')
-list.insertFirst('f')
-list.insertFirst('g')
-list.insertFirst('h')
-list.insertFirst('i')
-console.log(list.size())
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
-console.log(list.getFirst())
-console.log(list.size())
-// console.log(list.getLast())
+//list.insertAfter('e')
+//list.insertAfter('f')
+//list.insertAfter('g')
+//list.insertAfter('h')
+//list.insertAfter('i')
+//list.insertAfter('j')
+//list.insertFirst('e')
+//list.insertFirst('f')
+//list.insertFirst('g')
+//list.insertFirst('h')
+//list.insertFirst('i')
+//console.log(list.size())
+//list.removeFirst()
+//list.removeFirst()
+//list.removeFirst()
+//console.log(list.getFirst())
+//console.log(list.getLast())
+//console.log(list.head)
+//list.removeLast()
+// console.log(list.size())
+//console.log(list.getLast())
 // console.log(list.clear())
 // console.log(list.size())
