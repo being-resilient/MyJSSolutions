@@ -71,19 +71,30 @@ class LinkedList {
             } 
         }
     }
+
+    insertLast(data) {
+        var temp = this.head
+        var prev = null
+        const node = new Node(data)
+        while (temp) {
+            prev = temp
+            temp = temp.next
+        }
+        prev.next = node
+    }
 }
 
 module.exports = { Node, LinkedList };
-const list = new LinkedList();
+//const list = new LinkedList();
 
 // list.size()
-list.insertFirst('e')
-list.insertFirst('f')
-list.insertFirst('g')
-console.log(list.size())
-list.removeLast()
-console.log(list.size())
-console.log(list.getLast())
+//list.insertFirst('e')
+//list.insertFirst('f')
+//list.insertFirst('g')
+//console.log(list.size())
+//list.removeLast()
+//console.log(list.size())
+//console.log(list.getLast())
 //list.insertFirst('h')
 //list.insertFirst('i')
 //list.insertFirst('j')
