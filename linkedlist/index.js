@@ -45,52 +45,48 @@ class LinkedList {
         return prev
     }
 
-    insertAfter(data) {
-        const node = new Node(data)
-        if (!this.head.next) {
-            this.head.next = node
-        } else {
-            var temp = this.head
-            while(temp.next !== null) {
-                temp = temp.next
-            }
-            temp.next = new Node(data)
-        }
-        return this.head
-    }
-
     clear() {
         this.head = null
-        return this.head
     }
 
     removeFirst() {
         const temp = this.head.next
-        this.head.next = temp.next
+        this.head = temp
     }
 
     removeLast() {
-        var temp = new Node(null)
-        temp = this.head
-        var temp_two = new Node(null)
-        while (temp.next !== null) {
-            temp_two = temp
-            temp = temp.next
+        var temp = this.head
+        var prev = null
+        if (!temp || !temp.next) {
+            temp = null 
+            this.head = temp
+        } else {
+            while (temp) {
+                prev = temp
+                temp = temp.next
+                if (!temp.next) {
+                    prev.next = null
+                    break
+                }
+            } 
         }
-        temp_two = null
     }
 }
 
 module.exports = { Node, LinkedList };
-//const list = new LinkedList();
+const list = new LinkedList();
 
 // list.size()
-//list.insertAfter('e')
-//list.insertAfter('f')
-//list.insertAfter('g')
-//list.insertAfter('h')
-//list.insertAfter('i')
-//list.insertAfter('j')
+list.insertFirst('e')
+list.insertFirst('f')
+list.insertFirst('g')
+console.log(list.size())
+list.removeLast()
+console.log(list.size())
+console.log(list.getLast())
+//list.insertFirst('h')
+//list.insertFirst('i')
+//list.insertFirst('j')
 //list.insertFirst('e')
 //list.insertFirst('f')
 //list.insertFirst('g')
